@@ -1,0 +1,566 @@
+function TPTS2(P1)
+                    local Distance = (P1.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+                    if Distance < 150 then
+                        Speed = 9999
+                    elseif Distance < 200 then
+                        Speed = 888
+                    elseif Distance < 300 then
+                        Speed = 425
+                    elseif Distance < 500 then
+                        Speed = 375
+                    elseif Distance < 1000 then
+                        Speed = 360
+                    elseif Distance >= 1000 then
+                        Speed = 360
+                    end
+                    game:GetService("TweenService"):Create(
+                        game.Players.LocalPlayer.Character.HumanoidRootPart,
+                        TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
+                        {CFrame = P1}
+                    ):Play()
+                    if _G.Stop_Tween==true then
+                        game:GetService("TweenService"):Create(
+                        game.Players.LocalPlayer.Character.HumanoidRootPart,
+                        TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
+                            {CFrame = P1}
+                        ):Cancel()
+                    end
+                    _G.Clip = true
+                    wait(Distance/Speed)
+                    _G.Clip = false
+                end
+
+
+
+
+
+
+
+
+
+wait(0.1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+wait(0.1)
+
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Droxy Hub V1", "Ocean")
+
+local Tab1 = Window:NewTab("Character")
+local Section1 = Tab1:NewSection("Local Character")
+
+Section1:NewToggle("Sit", "Sit", function(S)
+_G.Sit = S
+while _G.Sit do wait(0.0001)
+game.Players.LocalPlayer.Character.Humanoid.Sit = _G.Sit
+end
+end)
+
+Section1:NewButton("Force Reset", "Faster Remove Torso / Head", function()
+game.Players.LocalPlayer.Character.Head:Destroy()
+game.Players.LocalPlayer.Character.Torso:Destroy()
+game.Players.LocalPlayer.Character.UpperTorso:Destroy()
+end)
+
+local Tab = Window:NewTab("World Teleport")
+
+local Section = Tab:NewSection("World")
+
+Section:NewButton("Teleport To World 1", "Going Next World", function()
+                        _G.TP_Ser = true
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelMain")
+end)
+
+Section:NewButton("Teleport To World 2", "Going Next World", function()
+                        _G.TP_Ser = true
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelDressrosa")	
+end)
+
+Section:NewButton("Teleport To World 3", "Going Next World", function()
+                        _G.TP_Ser = true
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou")
+end)
+
+
+
+
+
+
+
+
+
+local Tab2 = Window:NewTab("World 1")
+
+local Section2 = Tab2:NewSection("Teleport")
+
+
+Section2:NewToggle("Smooth Tween", "ToggleInfo", function(state)
+    if state then
+do
+local NM = game:GetService("Workspace"):FindFirstChild("Noclip")
+if NM then
+  NM:Destroy()
+  end
+end
+local Noclip = Instance.new("Part",Workspace)
+   Noclip.Name = "Noclip"
+   Noclip.CanCollide = true
+   Noclip.Anchored = true
+   Noclip.Transparency = 0.7
+    Noclip.CastShadow = false
+   Noclip.BrickColor = BrickColor.new("Lapis")
+   Noclip.Material = "Neon"
+   Noclip.Size = Vector3.new(75,1,75)
+function Noclip()
+game:GetService("Workspace"):FindFirstChild("Noclip").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,-4.32,0)
+end
+_G.Noclip = true --Set Disable/Enable here (false / true)
+while _G.Noclip do wait(-9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999)
+pcall(function()
+Noclip()
+end)
+end
+    else
+do
+local NM = game:GetService("Workspace"):FindFirstChild("Noclip")
+if NM then
+  NM:Destroy()
+  end
+end
+local Noclip = Instance.new("Part",Workspace)
+   Noclip.Name = "Noclip"
+   Noclip.CanCollide = true
+   Noclip.Anchored = true
+   Noclip.Transparency = 0.7
+    Noclip.CastShadow = false
+   Noclip.BrickColor = BrickColor.new("Lapis")
+   Noclip.Material = "Neon"
+   Noclip.Size = Vector3.new(30,1,30)
+function Noclip()
+game:GetService("Workspace"):FindFirstChild("Noclip").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,-10,0)
+end
+_G.Noclip = false --Set Disable/Enable here (false / true)
+while _G.Noclip do wait(-9999999999999999)
+pcall(function()
+Noclip()
+end)
+end
+    end
+end)
+
+
+
+
+Section2:NewButton("Teleport To Middle Town", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-620.982666015625, 7.852232456207275, 1567.1182861328125))
+end)
+
+
+Section2:NewButton("Teleport To Pirate Starter", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(1078.43017578125, 16.27362060546875, 1423.67919921875))
+end)
+
+
+Section2:NewButton("Teleport To Junjle Monke", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-1509.37548828125, 22.852113723754883, 353.70489501953125))
+end)
+
+Section2:NewButton("Teleport To Pirate", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-1164.25927734375, 4.752061367034912, 3817.789306640625))
+end)
+
+Section2:NewButton("Teleport To Marine Fortress", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-4870.71044921875, 20.65204429626465, 4380.8525390625))
+end)
+
+Section2:NewButton("Teleport To Magma Village", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-5331.53369140625, 8.990684509277344, 8570.955078125))
+end)
+
+Section2:NewButton("Teleport To Marine Starter", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-2575.247314453125, 6.88883113861084, 2046.35205078125))
+end)
+
+Section2:NewButton("Teleport To Mob Leader Island", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-2843.701171875, 7.3922576904296875, 5337.38232421875))
+end)
+
+Section2:NewButton("Teleport To Desert", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(1094.1458740234375, 6.438475131988525, 4192.88720703125))
+end)
+
+Section2:NewButton("Teleport To Snow Island", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(1317.412841796875, 87.27310943603516, -1248.6287841796875))
+end)
+
+Section2:NewButton("Teleport To Colosseum", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-1332.9400634765625, 7.289083480834961, -2896.560546875))
+end)
+
+Section2:NewButton("Teleport To Sky 1", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-4857.23583984375, 717.66259765625, -2706.272705078125))
+end)
+
+Section2:NewButton("Teleport To Sky 2", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-4701.53125, 845.2769775390625, -1884.048583984375))
+end)
+
+Section2:NewButton("Teleport To Sky 3", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-7903.7041015625, 5573.03857421875, -514.6636962890625))
+end)
+
+Section2:NewButton("Teleport To Prison", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(5003.0576171875, 3.6516575813293457, 739.3246459960938))
+end)
+
+Section2:NewButton("Teleport To Under Water City", "Teleport", function()
+_G.Noclip = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(61163.8515625, 5.307313919067383, 1819.7841796875)
+end)
+
+Section2:NewButton("Teleport To Fountain City", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(5043.271484375, 1.5012856721878052, 4049.3779296875))
+end)
+
+Section2:NewButton("Teleport To Shank Room Boos", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-1445.15478515625, 29.852006912231445, -26.080507278442383))
+end)
+
+Section2:NewButton("Teleport To Ice Admiral Boss", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(1204.811279296875, 34.83292007446289, -1302.6239013671875))
+end)
+
+local Tab3 = Window:NewTab("World 2")
+
+local Section3 = Tab3:NewSection("Teleport")
+
+Section3:NewToggle("Smooth Tween", "ToggleInfo", function(state)
+    if state then
+do
+local NM = game:GetService("Workspace"):FindFirstChild("Noclip")
+if NM then
+  NM:Destroy()
+  end
+end
+local Noclip = Instance.new("Part",Workspace)
+   Noclip.Name = "Noclip"
+   Noclip.CanCollide = true
+   Noclip.Anchored = true
+   Noclip.Transparency = 0.7
+    Noclip.CastShadow = false
+   Noclip.BrickColor = BrickColor.new("Lapis")
+   Noclip.Material = "Neon"
+   Noclip.Size = Vector3.new(75,1,75)
+function Noclip()
+game:GetService("Workspace"):FindFirstChild("Noclip").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,-4.32,0)
+end
+_G.Noclip = true --Set Disable/Enable here (false / true)
+while _G.Noclip do wait(-9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999)
+pcall(function()
+Noclip()
+end)
+end
+    else
+do
+local NM = game:GetService("Workspace"):FindFirstChild("Noclip")
+if NM then
+  NM:Destroy()
+  end
+end
+local Noclip = Instance.new("Part",Workspace)
+   Noclip.Name = "Noclip"
+   Noclip.CanCollide = true
+   Noclip.Anchored = true
+   Noclip.Transparency = 0.7
+    Noclip.CastShadow = false
+   Noclip.BrickColor = BrickColor.new("Lapis")
+   Noclip.Material = "Neon"
+   Noclip.Size = Vector3.new(30,1,30)
+function Noclip()
+game:GetService("Workspace"):FindFirstChild("Noclip").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,-10,0)
+end
+_G.Noclip = false --Set Disable/Enable here (false / true)
+while _G.Noclip do wait(-9999999999999999)
+pcall(function()
+Noclip()
+end)
+end
+    end
+end)
+
+
+
+
+Section3:NewButton("Teleport To King Dom Of Rose", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-9.88973331451416, 29.30253028869629, 2770.129638671875))
+end)
+
+Section3:NewButton("Teleport To Cafe", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-381.10443115234375, 73.08590698242188, 243.00343322753906))
+end)
+
+Section3:NewButton("Teleport To Mansion", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-390.0936584472656, 332.0863342285156, 725.1842651367188))
+end)
+
+Section3:NewButton("Teleport To Dofa Boss", "Teleport", function()
+_G.Noclip = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2284.912109375, 15.177838325500488, 905.48291015625)
+end)
+
+Section3:NewButton("Teleport To Factory", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(479.34619140625, 74.37566375732422, -407.98272705078125))
+end)
+
+Section3:NewButton("Teleport To Coloseeum", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-1849.630126953125, 45.82050323486328, 1358.78271484375))
+end)
+
+Section3:NewButton("Teleport To Green Zone", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-2261.998779296875, 73.22709655761719, -2699.59912109375))
+end)
+
+Section3:NewButton("Teleport To Big Snow Mountain", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(791.1622314453125, 411.6654357910156, -5250.435546875))
+end)
+
+Section3:NewButton("Teleport To Hot Island", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-5442.85302734375, 15.97756290435791, -5228.8671875))
+end)
+
+Section3:NewButton("Teleport To Lab (Law Raid)", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-5560.59912109375, 329.0662841796875, -5923.59375))
+end)
+
+Section3:NewButton("Teleport To Ship Room (Law Raid)", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-4960.541015625, 143.75741577148438, -5383.7724609375))
+end)
+
+Section3:NewButton("Teleport To Cold Island", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-6054.47900390625, 15.97756290435791, -5084.96337890625))
+end)
+
+Section3:NewButton("Teleport To Ship Room (Normal Raid)", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-6440.53759765625, 250.64523315429688, -4499.689453125))
+end)
+
+Section3:NewButton("Teleport To Zombie Island", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-5618.3046875, 492.22174072265625, -779))
+end)
+
+Section3:NewButton("Teleport To Zombie Island", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-5618.3046875, 492.22174072265625, -779))
+end)
+
+Section3:NewButton("Teleport To Cursed Ship", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-6508.55810546875, 83.21282196044922, -132.83953857421875))
+end)
+
+Section3:NewButton("Teleport To Skull Island", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-2986.381103515625, 238.8719940185547, -10190.99609375))
+end)
+
+Section3:NewButton("Teleport To Ice Castle", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(5670.2412109375, 28.216978073120117, -6011.359375))
+end)
+
+Section3:NewButton("Teleport Ussop Island", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(4755.62646484375, 8.34446907043457, 2851.26806640625))
+end)
+
+local Tab4 = Window:NewTab("World 3")
+
+local Section4 = Tab4:NewSection("Teleport")
+
+Section4:NewToggle("Smooth Tween", "ToggleInfo", function(state)
+    if state then
+do
+local NM = game:GetService("Workspace"):FindFirstChild("Noclip")
+if NM then
+  NM:Destroy()
+  end
+end
+local Noclip = Instance.new("Part",Workspace)
+   Noclip.Name = "Noclip"
+   Noclip.CanCollide = true
+   Noclip.Anchored = true
+   Noclip.Transparency = 0.7
+    Noclip.CastShadow = false
+   Noclip.BrickColor = BrickColor.new("Lapis")
+   Noclip.Material = "Neon"
+   Noclip.Size = Vector3.new(75,1,75)
+function Noclip()
+game:GetService("Workspace"):FindFirstChild("Noclip").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,-4.32,0)
+end
+_G.Noclip = true --Set Disable/Enable here (false / true)
+while _G.Noclip do wait(-9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999)
+pcall(function()
+Noclip()
+end)
+end
+    else
+do
+local NM = game:GetService("Workspace"):FindFirstChild("Noclip")
+if NM then
+  NM:Destroy()
+  end
+end
+local Noclip = Instance.new("Part",Workspace)
+   Noclip.Name = "Noclip"
+   Noclip.CanCollide = true
+   Noclip.Anchored = true
+   Noclip.Transparency = 0.7
+    Noclip.CastShadow = false
+   Noclip.BrickColor = BrickColor.new("Lapis")
+   Noclip.Material = "Neon"
+   Noclip.Size = Vector3.new(30,1,30)
+function Noclip()
+game:GetService("Workspace"):FindFirstChild("Noclip").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,-10,0)
+end
+_G.Noclip = false --Set Disable/Enable here (false / true)
+while _G.Noclip do wait(-9999999999999999)
+pcall(function()
+Noclip()
+end)
+end
+    end
+end)
+
+Section4:NewButton("Teleport First Spot", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-211.39991760253906, 6.755743503570557, 5078.25830078125))
+end)
+
+Section4:NewButton("Teleport Mansion", "Teleport", function()
+_G.Noclip = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-12551.4248046875, 337.1940612792969, -7490.66064453125)
+end)
+
+Section4:NewButton("Teleport Great Tree", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(2159.84716796875, 25.913352966308594, -6563.24609375))
+end)
+
+Section4:NewButton("Teleport Castle", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-5018.23974609375, 314.5412902832031, -3014.0615234375))
+end)
+
+Section4:NewButton("Teleport Hydra Island", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(5229.27978515625, 603.9165649414062, 342.1314392089844))
+end)
+
+Section4:NewButton("Teleport Floating Turtle", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-9970.1748046875, 331.7884521484375, -8331.8837890625))
+end)
+
+Section4:NewButton("Teleport Haunted Castle", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-9366.802734375, 141.35260009765625, 5443.94091796875))
+end)
+
+Section4:NewButton("Teleport ice Cream Island", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-872.6460571289062, 65.84534454345703, -10918.5927734375))
+end)
+
+Section4:NewButton("Teleport Peanut Island", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-2050.48876953125, 38.12994384765625, -10197.1875))
+end)
+
+Section4:NewButton("Teleport Cake Island", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-1939.8961181640625, 37.824066162109375, -11847.1640625))
+end)
+
+Section4:NewButton("Teleport Cake Island", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-1939.8961181640625, 37.824066162109375, -11847.1640625))
+end)
+
+Section4:NewButton("Teleport Chocolate Island", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(303.97552490234375, 24.760059356689453, -12212.189453125))
+end)
+
+Section4:NewButton("Teleport Chocolate Island", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(303.97552490234375, 24.760059356689453, -12212.189453125))
+end)
+
+Section4:NewButton("Teleport Candy Island", "Tween Teleport", function()
+_G.Noclip = true
+TPTS2(CFrame.new(-1080.0343017578125, 14.640438079833984, -14471.080078125))
+end)
